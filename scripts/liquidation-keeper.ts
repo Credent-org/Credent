@@ -1,6 +1,6 @@
 #!/usr/bin/env -S npx tsx
 // =============================================================================
-// TrustLend — Automated Liquidation Keeper (issue #72)
+// Credent — Automated Liquidation Keeper (issue #72)
 // =============================================================================
 // Monitors open loans for under-collateralization and liquidates them on-chain
 // before the protocol takes on bad debt. Designed to run either as a one-shot
@@ -168,13 +168,13 @@ export async function sendAlert(
 
   if (cfg.slackWebhookUrl) {
     tasks.push(
-      postJson(cfg.slackWebhookUrl, { text: `${badge} *TrustLend Liquidation Keeper*\n${message}` })
+      postJson(cfg.slackWebhookUrl, { text: `${badge} *Credent Liquidation Keeper*\n${message}` })
     );
   }
   if (cfg.discordWebhookUrl) {
     tasks.push(
       postJson(cfg.discordWebhookUrl, {
-        content: `${badge} **TrustLend Liquidation Keeper**\n${message}`,
+        content: `${badge} **Credent Liquidation Keeper**\n${message}`,
       })
     );
   }

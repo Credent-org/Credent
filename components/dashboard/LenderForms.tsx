@@ -732,12 +732,12 @@ export function LenderForms({
       });
 
       const selectedPool = pools.find((p) => p.id === params.poolId);
-      const poolName = selectedPool ? selectedPool.name : "TrustLend Pool";
+      const poolName = selectedPool ? selectedPool.name : "Credent Pool";
 
       const receiverId = await registerSep12Customer(endpoints.kycServer, jwt, {
-        first_name: "TrustLend",
+        first_name: "Credent",
         last_name: poolName,
-        email: "escrow@trustlend.io",
+        email: "escrow@credent.io",
         type: "sep31-receiver",
       });
 
@@ -780,7 +780,7 @@ export function LenderForms({
 
       if (!apiRes.ok) {
         const errJson = await apiRes.json();
-        throw new Error(errJson.error ?? "Failed to register transaction on TrustLend.");
+        throw new Error(errJson.error ?? "Failed to register transaction on Credent.");
       }
 
       setFiatInstructions({
@@ -1142,7 +1142,7 @@ export function LenderForms({
                     marginBottom: "0.75rem",
                   }}
                 >
-                  Your XLM will be sent directly to TrustLend&apos;s Stellar escrow
+                  Your XLM will be sent directly to Credent&apos;s Stellar escrow
                   using your selected wallet connector. A real on-chain transaction
                   is required — no mock deposits.
                 </p>

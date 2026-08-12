@@ -1,7 +1,7 @@
 #![no_std]
-//! TrustLend Multi-Sig Admin
+//! Credent Multi-Sig Admin
 //!
-//! Replaces the single-admin bypass on TrustLend's rare, high-impact protocol
+//! Replaces the single-admin bypass on Credent's rare, high-impact protocol
 //! configuration operations — whitelisting collateral pools, changing fee
 //! tables, linking governance/oracle, and moving insurance-fund balances —
 //! with an N-of-M multi-signature approval flow.

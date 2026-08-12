@@ -51,7 +51,7 @@ export function presentBorrowerMetrics(metrics: BorrowerDashboardMetrics) {
   ];
 }
 
-export function presentLenderMetrics(metrics: LenderDashboardMetrics) {
+export function presencredenterMetrics(metrics: LenderDashboardMetrics) {
   return [
     { label: "Capital deployed", value: toCurrency(metrics.deployedCapital) },
     { label: "Interest earned", value: toCurrency(metrics.totalEarnings) },
@@ -153,7 +153,7 @@ export async function getBorrowerDashboardMetrics(
   }
 }
 
-export async function getLenderDashboardMetrics(
+export async function gecredenterDashboardMetrics(
   userId: string,
   walletAddress?: string | null,
 ): Promise<LenderDashboardMetrics> {

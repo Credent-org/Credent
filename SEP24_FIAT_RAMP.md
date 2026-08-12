@@ -6,7 +6,7 @@
 Borrowers in emerging markets receive loans on-chain but need **local fiat**. This
 integration lets them **cash out directly to a bank account or mobile-money wallet**
 through a Stellar Anchor using the standard **SEP-24 interactive** flow — no leaving
-the TrustLend dashboard.
+the Credent dashboard.
 
 ---
 

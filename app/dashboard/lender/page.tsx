@@ -2,8 +2,8 @@ import { WorkspaceFrame } from "@/components/dashboard/WorkspaceFrame";
 import { WalletCard } from "@/components/dashboard/WalletCard";
 import { requireAuthenticatedUser } from "@/lib/auth/session";
 import {
-  getLenderDashboardMetrics,
-  presentLenderMetrics,
+  gecredenterDashboardMetrics,
+  presencredenterMetrics,
 } from "@/lib/dashboard/metrics";
 import {
   getServerSupabaseClient,
@@ -22,7 +22,7 @@ export default async function LenderHomePage() {
   const { user } = await requireAuthenticatedUser("lender");
   const walletAddress =
     String(user.user_metadata?.wallet_address ?? "") || null;
-  const metrics = await getLenderDashboardMetrics(user.id, walletAddress);
+  const metrics = await gecredenterDashboardMetrics(user.id, walletAddress);
   const supabase = await getServerSupabaseClient();
   const srClient = getServiceRoleClient();
 
@@ -137,7 +137,7 @@ export default async function LenderHomePage() {
       userName={String(
         user.user_metadata?.full_name ?? profile?.full_name ?? "",
       )}
-      metrics={presentLenderMetrics(metrics)}
+      metrics={presencredenterMetrics(metrics)}
       headerWidget={
         <WalletCard
           address={walletAddress}

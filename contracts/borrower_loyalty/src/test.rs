@@ -5,7 +5,7 @@ use soroban_sdk::{testutils::Address as _, token, Env};
 
 fn default_config() -> RewardConfig {
     RewardConfig {
-        base_amount: 1_000_0000,               // 1 TLEND (7 decimals)
+        base_amount: 1_000_0000,               // 1 CREDENT (7 decimals)
         reference_loan_amount: 10_000_0000000, // 10_000 XLM
         max_duration_multiplier_bps: 10_000,   // 1.0x cap (30 days = 1.0x)
         tier_none_multiplier_bps: 5_000,       // 0.5x
@@ -101,11 +101,11 @@ fn test_reward_calculation_correctness() {
     let client = BorrowerLoyaltyContractClient::new(&env, &contract_id);
 
     // Platinum tier (4), 10_000 XLM, 30 days
-    // base_amount = 1 TLEND
+    // base_amount = 1 CREDENT
     // size_multiplier = 10_000 / 10_000 = 1.0x = 10_000 bps
     // duration_multiplier = 30/30 = 1.0x = 10_000 bps
     // tier_multiplier = 3.0x = 30_000 bps
-    // reward = 1 * 10000/10000 * 10000/10000 * 30000/10000 = 3 TLEND
+    // reward = 1 * 10000/10000 * 10000/10000 * 30000/10000 = 3 CREDENT
     let reward = client.distribute_reward(
         &lending,
         &borrower,
@@ -115,7 +115,7 @@ fn test_reward_calculation_correctness() {
     );
 
     // 1_000_0000 * (10_000/10_000) * (10_000/10_000) * (30_000/10_000) = 3_000_0000
-    assert_eq!(reward, 3_000_0000, "Platinum reward should be 3 TLEND");
+    assert_eq!(reward, 3_000_0000, "Platinum reward should be 3 CREDENT");
 
     let view_reward = client.calculate_reward_view(&10_000_0000000i128, &30, &4);
     assert_eq!(view_reward, 3_000_0000);
@@ -142,21 +142,21 @@ fn test_different_tiers_receive_different_rewards() {
         client.distribute_reward(&lending, &borrower_platinum, &10_000_0000000, &30, &4);
 
     // Tier multipliers: None=0.5x, Beginner=1x, Silver=1.5x, Gold=2x, Platinum=3x
-    // Base=1 TLEND, same size/time → rewards scale by tier
+    // Base=1 CREDENT, same size/time → rewards scale by tier
     assert!(none_reward < beginner_reward, "None < Beginner");
     assert!(beginner_reward < silver_reward, "Beginner < Silver");
     assert!(silver_reward < gold_reward, "Silver < Gold");
     assert!(gold_reward < platinum_reward, "Gold < Platinum");
 
-    // None: 1 * 1.0 * 1.0 * 0.5 = 0.5 TLEND
+    // None: 1 * 1.0 * 1.0 * 0.5 = 0.5 CREDENT
     assert_eq!(none_reward, 5_000_000);
-    // Beginner: 1 * 1.0 * 1.0 * 1.0 = 1 TLEND
+    // Beginner: 1 * 1.0 * 1.0 * 1.0 = 1 CREDENT
     assert_eq!(beginner_reward, 1_000_0000);
-    // Silver: 1 * 1.0 * 1.0 * 1.5 = 1.5 TLEND
+    // Silver: 1 * 1.0 * 1.0 * 1.5 = 1.5 CREDENT
     assert_eq!(silver_reward, 1_500_0000);
-    // Gold: 1 * 1.0 * 1.0 * 2.0 = 2 TLEND
+    // Gold: 1 * 1.0 * 1.0 * 2.0 = 2 CREDENT
     assert_eq!(gold_reward, 2_000_0000);
-    // Platinum: 1 * 1.0 * 1.0 * 3.0 = 3 TLEND
+    // Platinum: 1 * 1.0 * 1.0 * 3.0 = 3 CREDENT
     assert_eq!(platinum_reward, 3_000_0000);
 }
 
@@ -215,8 +215,8 @@ fn test_reward_scales_with_loan_size() {
     let large = client.distribute_reward(&lending, &borrower2, &20_000_0000000, &30, &4);
 
     // Platinum, 30 days:
-    // 5_000 XLM: 1 * (5000/10000) * 1.0 * 3.0 = 1.5 TLEND
-    // 20_000 XLM: 1 * (20000/10000) * 1.0 * 3.0 = 6.0 TLEND
+    // 5_000 XLM: 1 * (5000/10000) * 1.0 * 3.0 = 1.5 CREDENT
+    // 20_000 XLM: 1 * (20000/10000) * 1.0 * 3.0 = 6.0 CREDENT
     assert!(small < large, "Larger loan should get more rewards");
     assert_eq!(small, 1_500_0000);
     assert_eq!(large, 6_000_0000);
@@ -232,14 +232,14 @@ fn test_reward_scales_with_duration() {
     let long = client.distribute_reward(&lending, &borrower2, &10_000_0000000, &60, &4);
 
     // Platinum, 10_000 XLM, max_duration_multiplier=10_000 bps:
-    // 15 days: 1 * 1.0 * (15/30=0.5) * 3.0 = 1.5 TLEND
-    // 60 days: 1 * 1.0 * (60/30=2.0) * 3.0 = 6.0 TLEND (capped at 10_000 bps = 1.0x)
-    // 1 * 1.0 * 1.0 * 3.0 = 3.0 TLEND
+    // 15 days: 1 * 1.0 * (15/30=0.5) * 3.0 = 1.5 CREDENT
+    // 60 days: 1 * 1.0 * (60/30=2.0) * 3.0 = 6.0 CREDENT (capped at 10_000 bps = 1.0x)
+    // 1 * 1.0 * 1.0 * 3.0 = 3.0 CREDENT
     assert!(short < long, "Longer duration should get more rewards");
-    assert_eq!(short, 1_500_0000, "15-day reward should be 1.5 TLEND");
+    assert_eq!(short, 1_500_0000, "15-day reward should be 1.5 CREDENT");
     assert_eq!(
         long, 3_000_0000,
-        "60-day reward should be 3.0 TLEND (capped at 1.0x)"
+        "60-day reward should be 3.0 CREDENT (capped at 1.0x)"
     );
 }
 
@@ -269,7 +269,7 @@ fn test_fund_and_drain_scenario() {
 
     client.initialize(&admin, &token_id, &lending, &default_config());
 
-    // Fund with only 1 TLEND
+    // Fund with only 1 CREDENT
     let token_admin_client = token::StellarAssetClient::new(&env, &token_id);
     token_admin_client.mint(&contract_id, &1_000_0000);
 

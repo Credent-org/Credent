@@ -102,7 +102,7 @@ export function WorkspaceFrame({
           <aside className={`workspace-sidebar ${isSidebarOpen ? "workspace-sidebar--open" : ""}`} aria-label="Dashboard sidebar">
             <div className="workspace-brand-wrap">
               <Link href="/" className="workspace-brand font-display">
-                TrustLend
+                Credent
               </Link>
               <p className="workspace-sidebar-kicker">{roleLabel}</p>
             </div>

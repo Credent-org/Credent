@@ -2,7 +2,7 @@
 # See docker-compose.subquery.yml for Docker-based local development.
 
 specVersion: 1.0.0
-name: trustlend-soroban-indexer
+name: credent-soroban-indexer
 version: 0.1.0
 runner:
   node:
@@ -12,8 +12,8 @@ runner:
     name: '@subql/query'
     version: '*'
 description: >-
-  Indexer to capture deposits, borrows, and liquidations from TrustLend Soroban contracts
-repository: 'https://github.com/thisisouvik/trustlend-stellar'
+  Indexer to capture deposits, borrows, and liquidations from Credent Soroban contracts
+repository: 'https://github.com/ChiedozieObidile/Credent'
 schema:
   file: ./schema.graphql
 

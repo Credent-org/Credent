@@ -2245,11 +2245,11 @@ fn test_repayment_calls_loyalty_contract() {
     assert_eq!(total, borrower_rewards);
 
     // Verify reward amount: Platinum tier, 10_000 XLM, 30 days
-    // base=1 TLEND, size=1.0x, duration=1.0x (max=1.0x), tier=3.0x
-    // expected = 1 * 1.0 * 1.0 * 3.0 = 3 TLEND
+    // base=1 CREDENT, size=1.0x, duration=1.0x (max=1.0x), tier=3.0x
+    // expected = 1 * 1.0 * 1.0 * 3.0 = 3 CREDENT
     assert_eq!(
         borrower_rewards, 3_000_0000,
-        "Platinum borrower should get 3 TLEND"
+        "Platinum borrower should get 3 CREDENT"
     );
 }
 

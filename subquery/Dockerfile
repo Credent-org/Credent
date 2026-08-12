@@ -1,5 +1,5 @@
 # ──────────────────────────────────────────────────────────────────────────────
-# TrustLend — SubQuery Soroban Indexer Dockerfile
+# Credent — SubQuery Soroban Indexer Dockerfile
 # ──────────────────────────────────────────────────────────────────────────────
 # Multi-stage build:
 #   1. Install dependencies and build the SubQuery project (codegen + compile)
@@ -30,8 +30,8 @@ RUN npx subql build
 # ── Stage 2: Runtime ──────────────────────────────────────────────────────────
 FROM onfinality/subql-node-stellar:latest AS runner
 
-LABEL org.opencontainers.image.source="https://github.com/thisisouvik/trustlend-stellar"
-LABEL org.opencontainers.image.description="TrustLend Soroban SubQuery Indexer"
+LABEL org.opencontainers.image.source="https://github.com/ChiedozieObidile/Credent"
+LABEL org.opencontainers.image.description="Credent Soroban SubQuery Indexer"
 LABEL org.opencontainers.image.licenses="MIT"
 
 # Copy the built project from the builder stage
@@ -43,4 +43,4 @@ COPY --from=builder /subquery/schema.graphql /app/schema.graphql
 WORKDIR /app
 
 # Default command — override via docker-compose or CLI
-CMD ["-f=/app", "--db-schema=trustlend"]
+CMD ["-f=/app", "--db-schema=credent"]

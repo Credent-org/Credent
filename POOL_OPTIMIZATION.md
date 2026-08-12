@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the optimization work done to improve Supabase database query performance for large pool lists in TrustLend.
+This document describes the optimization work done to improve Supabase database query performance for large pool lists in Credent.
 
 **Issue**: Waterfall queries when fetching pools data causing N+1 query problems and excessive network round-trips.
 

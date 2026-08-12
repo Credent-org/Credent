@@ -1,5 +1,5 @@
 #![no_std]
-//! TrustLend DAO Governance
+//! Credent DAO Governance
 //!
 //! Decentralizes changes to platform parameters — starting with the lending
 //! platform fee. Members propose a new fee, vote with **reputation-weighted**

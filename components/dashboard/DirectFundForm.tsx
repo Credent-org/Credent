@@ -38,7 +38,7 @@ const STEP_LABELS: Record<Step, string> = {
   building: "2/5 -- Building Stellar payment...",
   signing: "3/5 -- Waiting for signature...",
   submitting: "4/5 -- Submitting to Stellar network...",
-  recording: "5/5 -- Recording on TrustLend...",
+  recording: "5/5 -- Recording on Credent...",
   done: "Success!",
   error: "Failed",
 };
@@ -143,7 +143,7 @@ export function DirectFundForm({ loan, onClose }: DirectFundFormProps) {
 
       const txHash: string = submitData.hash;
 
-      // Step 5 -- Record on TrustLend
+      // Step 5 -- Record on Credent
       setStep("recording");
       const apiRes = await fetch("/api/loans/fund", {
         method: "POST",
@@ -382,7 +382,7 @@ export function DirectFundForm({ loan, onClose }: DirectFundFormProps) {
             lineHeight: 1.5,
           }}
         >
-          ℹ️ Your XLM will be sent directly to the borrower. TrustLend records
+          ℹ️ Your XLM will be sent directly to the borrower. Credent records
           the transaction hash to verify your claim to the repayment.
         </p>
       </div>

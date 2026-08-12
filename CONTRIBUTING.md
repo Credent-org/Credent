@@ -1,6 +1,6 @@
-# Contributing to TrustLend
+# Contributing to Credent
 
-First off, thank you for considering contributing to TrustLend! It's people like you that make TrustLend such a great tool.
+First off, thank you for considering contributing to Credent! It's people like you that make Credent such a great tool.
 
 ## Where do I go from here?
 
@@ -8,7 +8,7 @@ If you've noticed a bug or have a feature request, make one! It's generally best
 
 ## Fork & create a branch
 
-If this is something you think you can fix, then fork TrustLend and create a branch with a descriptive name.
+If this is something you think you can fix, then fork Credent and create a branch with a descriptive name.
 
 A good branch name would be (where issue #325 is the ticket you're working on):
 
@@ -39,10 +39,10 @@ At this point, you're ready to make your changes. Feel free to ask for help; eve
 
 ## Make a Pull Request
 
-At this point, you should switch back to your master branch and make sure it's up to date with TrustLend's master branch:
+At this point, you should switch back to your master branch and make sure it's up to date with Credent's master branch:
 
 ```sh
-git remote add upstream git@github.com:thisisouvik/trustlend-stellar.git
+git remote add upstream git@github.com:thisisouvik/Credent.git
 git checkout master
 git pull upstream master
 ```

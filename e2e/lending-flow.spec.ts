@@ -4,7 +4,7 @@ import freighterMock from "./setup/freighter-mock";
 // Mock constant values to simulate deterministic chain data
 const MOCK_LENDING_CONTRACT = "CA_MOCK_LENDING_CONTRACT_ID";
 
-test.describe("TrustLend Complete Lending Flow", () => {
+test.describe("Credent Complete Lending Flow", () => {
   // Apply our global mock before any navigation so the window object contains `freighter`
   test.beforeEach(async ({ page }) => {
     await page.addInitScript(freighterMock);

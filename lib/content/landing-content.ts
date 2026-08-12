@@ -24,7 +24,7 @@ export const heroContent: HeroContent = {
   titleMain: "Borrow smarter.",
   titleAccent: "Lend with confidence.",
   description:
-    "TrustLend connects borrowers and lenders through behavior-based reputation and clear role-specific workflows.",
+    "Credent connects borrowers and lenders through behavior-based reputation and clear role-specific workflows.",
 };
 
 export const metrics: MetricItem[] = [
@@ -37,7 +37,7 @@ export const metrics: MetricItem[] = [
 export const highlightContent: HighlightContent = {
   title: "Anytime, Anywhere",
   description:
-    "TrustLend helps users build reputation from real behavior and unlock fair capital without paperwork-heavy approval cycles.",
+    "Credent helps users build reputation from real behavior and unlock fair capital without paperwork-heavy approval cycles.",
   callout:
     "No paid tasks. No synthetic score farming. Just real financial trust that compounds with every healthy action.",
 };
@@ -112,9 +112,9 @@ export const p2pSteps: P2PStep[] = [
 
 export const faqItems: FaqItem[] = [
   {
-    question: "What is TrustLend?",
+    question: "What is Credent?",
     answer:
-      "TrustLend is a reputation-based micro-lending platform where creditworthiness is driven by real financial behavior, not collateral or paid tasks.",
+      "Credent is a reputation-based micro-lending platform where creditworthiness is driven by real financial behavior, not collateral or paid tasks.",
   },
   {
     question: "Do I need to create an account with email and password?",
@@ -127,9 +127,9 @@ export const faqItems: FaqItem[] = [
       "The score primarily reflects repayment history, lending activity, transaction consistency, and verified external financial signals.",
   },
   {
-    question: "How does TrustLend differ from typical DAO lending platforms?",
+    question: "How does Credent differ from typical DAO lending platforms?",
     answer:
-      "Most DAO platforms rely on collateral-heavy crypto-native flows. TrustLend is built for real-world freelancers and unbanked users using behavior-based trust.",
+      "Most DAO platforms rely on collateral-heavy crypto-native flows. Credent is built for real-world freelancers and unbanked users using behavior-based trust.",
   },
   {
     question: "Can lenders monitor risk transparently?",

@@ -1,6 +1,6 @@
-# TrustLend Roadmap
+# Credent Roadmap
 
-Welcome to the TrustLend Roadmap! This document outlines our high-level goals and planned features. Please note that this roadmap is subject to change based on community feedback and project priorities.
+Welcome to the Credent Roadmap! This document outlines our high-level goals and planned features. Please note that this roadmap is subject to change based on community feedback and project priorities.
 
 ## 🚀 Phase 1: Foundation (Current)
 - [x] Initial smart contract deployment on Stellar/Soroban Testnet

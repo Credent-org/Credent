@@ -170,7 +170,7 @@ export function verifyChallenge(signedTxXdr: string, expectedAddress: string): s
 
 /** Deterministic e-mail identity for a wallet (never receives real mail). */
 export function walletEmail(address: string): string {
-  return `${address.toLowerCase()}@siws.trustlend.app`;
+  return `${address.toLowerCase()}@siws.credent.app`;
 }
 
 /**

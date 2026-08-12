@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="public/logo.png" alt="TrustLend Logo" width="180" />
+  <img src="public/logo.png" alt="Credent Logo" width="180" />
 </p>
 
-<h1 align="center">TrustLend</h1>
+<h1 align="center">Credent</h1>
 
 <p align="center"><em>Reputation is your credit score. Earn trust, unlock capital, and build financial access.</em></p>
 
@@ -19,7 +19,7 @@
 <p align="center">✨ Fast. Transparent. Auditable. Global. ✨</p>
 
 <p align="center">
-  <strong><a href="https://trustlendborrow.vercel.app/">Live Production</a></strong> |
+  <strong><a href="https://credentborrow.vercel.app/">Live Production</a></strong> |
   <strong><a href="https://youtu.be/V-SQxunQLow">Video Demo</a></strong> |
   <strong><a href="ROADMAP.md">Roadmap</a></strong> |
   <strong><a href="GETTING_STARTED.md">Getting Started Guide</a></strong> |
@@ -30,13 +30,13 @@
 
 ## 🌍 About The Project
 
-**TrustLend** is a decentralized micro-lending platform built on Stellar and Soroban. It bridges the gap between:
+**Credent** is a decentralized micro-lending platform built on Stellar and Soroban. It bridges the gap between:
 - **Borrowers** in emerging markets who need fast, collateral-free working capital.
 - **Lenders** who want transparent yield with measurable social impact.
 
-Traditional lending excludes millions who lack formal credit history or collateral. TrustLend solves this by utilizing **behavior-based on-chain reputation** and contract-enforced lending rules.
+Traditional lending excludes millions who lack formal credit history or collateral. Credent solves this by utilizing **behavior-based on-chain reputation** and contract-enforced lending rules.
 
-### 🏆 What Makes TrustLend Unique?
+### 🏆 What Makes Credent Unique?
 - **Behavior-Based Reputation:** Replaces legacy collateral-first lending with dynamic on-chain scoring.
 - **Escrow-Assisted Disbursement:** Includes revocation window controls to protect lenders.
 - **Default Management:** Mitigates risk via insurance-pool mechanics.
@@ -45,14 +45,14 @@ Traditional lending excludes millions who lack formal credit history or collater
 
 ---
 
-## 🚀 Vision: How TrustLend Can Evolve
+## 🚀 Vision: How Credent Can Evolve
 
-TrustLend is designed as a foundational layer for decentralized, inclusive credit. As an open-source project, our vision for evolution includes:
+Credent is designed as a foundational layer for decentralized, inclusive credit. As an open-source project, our vision for evolution includes:
 
 1. **Decentralized Credit Oracles:** Evolving the reputation system to aggregate off-chain data (utility bills, mobile money history, Web2 integrations) via trusted oracles.
 2. **Cross-Chain Liquidity:** Expanding lender pools to accept stablecoins across various ecosystems, routing them securely through Stellar's high-speed finality layer.
 3. **DAO Governance:** Transitioning platform parameters (interest rates, insurance pool fees, slashing mechanics) to a community-governed DAO framework.
-4. **Institutional Underwriting:** Enabling institutional liquidity providers to plug proprietary risk models into TrustLend's smart contracts to automatically fund specific borrower profiles.
+4. **Institutional Underwriting:** Enabling institutional liquidity providers to plug proprietary risk models into Credent's smart contracts to automatically fund specific borrower profiles.
 5. **Global Fiat On/Off Ramps:** Deepening integration with Stellar anchors to allow seamless fiat borrowing and repayment in local currencies worldwide.
 
 *We welcome open-source contributors to help us build this vision! Check out our [Roadmap](ROADMAP.md) for upcoming milestones.*
@@ -77,7 +77,7 @@ TrustLend is designed as a foundational layer for decentralized, inclusive credi
 
 ## 🏗️ Architecture & Workflow
 
-TrustLend uses a practical hybrid architecture: **fast UX off-chain** (Supabase/Next.js) combined with **trust-critical logic on-chain** (Soroban/Stellar). The diagram below maps every component and data flow across all six layers of the platform.
+Credent uses a practical hybrid architecture: **fast UX off-chain** (Supabase/Next.js) combined with **trust-critical logic on-chain** (Soroban/Stellar). The diagram below maps every component and data flow across all six layers of the platform.
 
 ```mermaid
 flowchart TB
@@ -288,8 +288,8 @@ flowchart LR
 ### Quick Start
 
 ```bash
-git clone https://github.com/thisisouvik/trustlend-stellar.git
-cd trustlend-stellar
+git clone https://github.com/thisisouvik/Credent.git
+cd Credent
 npm install
 cp .env.example .env.local
 # Fill in your .env.local values, then:
@@ -315,7 +315,7 @@ See the [complete setup guide →](GETTING_STARTED.md)
 **Deployment Credentials:**
 - Network: Stellar Testnet
 - Admin Address: `GAJRNUO6HSMQG4FNHNWQVRXJZJZ7QRA7HXPYYB6H5PTA3EAAJXJNZD7U`
-- Deployment Source Key Alias: `trustlend-admin`
+- Deployment Source Key Alias: `credent-admin`
 
 **Contract Registry:**
 | Contract | Env Key | Contract ID |
@@ -329,14 +329,14 @@ See the [complete setup guide →](GETTING_STARTED.md)
 | Treasury | — | *(set at deployment)* |
 | Auto-Compound Vault | — | *(set at deployment)* |
 
-TrustLend utilizes the standard Soroban `Contract` class flow for integrations (`simulateTransaction`, `assembleTransaction`, etc.). Check `lib/stellar/soroban.ts` for reference.
+Credent utilizes the standard Soroban `Contract` class flow for integrations (`simulateTransaction`, `assembleTransaction`, etc.). Check `lib/stellar/soroban.ts` for reference.
 </details>
 
 ---
 
 ## 🔔 Payment Due Webhook Scheduler
 
-TrustLend includes an automated scheduler that checks for loans with payment deadlines approaching within **48 hours** and dispatches webhook notifications to a configured notification service.
+Credent includes an automated scheduler that checks for loans with payment deadlines approaching within **48 hours** and dispatches webhook notifications to a configured notification service.
 
 ### How It Works
 
@@ -354,10 +354,10 @@ TrustLend includes an automated scheduler that checks for loans with payment dea
 | `CRON_SECRET` | Secret token used to authenticate scheduler requests (`Authorization: Bearer <value>`) |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase service-role key (required for RLS-bypassing loan queries) |
 | `RESEND_API_KEY` | Optional Resend API key for borrower email notifications |
-| `RESEND_FROM_EMAIL` | Verified sender address used for TrustLend emails |
+| `RESEND_FROM_EMAIL` | Verified sender address used for Credent emails |
 | `RESEND_REPLY_TO_EMAIL` | Optional reply-to address for support responses |
 
-When Resend is configured, TrustLend sends borrower emails for loan approval,
+When Resend is configured, Credent sends borrower emails for loan approval,
 loan funding, and overdue payments. Email failures are logged but do not roll
 back successful loan state changes.
 
@@ -396,10 +396,10 @@ curl -X POST https://your-app.vercel.app/api/cron/payment-due \
 
 ## 👥 Contributors
 
-Thanks goes to these wonderful people who have contributed to TrustLend:
+Thanks goes to these wonderful people who have contributed to Credent:
 
-<a href="https://github.com/thisisouvik/trustlend-stellar/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=thisisouvik/trustlend-stellar" alt="Contributors" />
+<a href="https://github.com/thisisouvik/Credent/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=thisisouvik/Credent" alt="Contributors" />
 </a>
 
 ## 🤝 Contributing
@@ -412,7 +412,7 @@ Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct]
 
 ## 🛡️ Security
 
-If you discover a security vulnerability within TrustLend, please refer to our [Security Policy](SECURITY.md) for reporting instructions. Do **not** open a public issue for security-related matters.
+If you discover a security vulnerability within Credent, please refer to our [Security Policy](SECURITY.md) for reporting instructions. Do **not** open a public issue for security-related matters.
 
 ---
 
@@ -422,4 +422,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-<p align="center">Made with ❤️ by the TrustLend Community.</p>
+<p align="center">Made with ❤️ by the Credent Community.</p>

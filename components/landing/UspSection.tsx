@@ -19,7 +19,7 @@ export function UspSection({ items }: UspSectionProps) {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          Why TrustLend?
+          Why Credent?
         </motion.h2>
 
         <motion.div

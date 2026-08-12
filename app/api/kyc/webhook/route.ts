@@ -137,7 +137,7 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json({
     ok: true,
-    service: "TrustLend KYC Webhook",
+    service: "Credent KYC Webhook",
     provider: "SumSub",
   });
 }

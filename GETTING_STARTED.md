@@ -1,6 +1,6 @@
-# Getting Started with TrustLend
+# Getting Started with Credent
 
-Welcome, contributor! This guide walks you through setting up your local development environment for TrustLend — from installing the Soroban CLI and Node dependencies to running the full test suite.
+Welcome, contributor! This guide walks you through setting up your local development environment for Credent — from installing the Soroban CLI and Node dependencies to running the full test suite.
 
 ---
 
@@ -77,17 +77,17 @@ stellar --version
 
 ### Fork First
 
-If you plan to contribute, [fork the repository](https://github.com/thisisouvik/trustlend-stellar/fork) on GitHub, then clone your fork:
+If you plan to contribute, [fork the repository](https://github.com/thisisouvik/Credent/fork) on GitHub, then clone your fork:
 
 ```bash
-git clone https://github.com/<your-username>/trustlend-stellar.git
-cd trustlend-stellar
+git clone https://github.com/<your-username>/Credent.git
+cd Credent
 ```
 
 Add the original repo as an upstream remote so you can sync changes:
 
 ```bash
-git remote add upstream https://github.com/thisisouvik/trustlend-stellar.git
+git remote add upstream https://github.com/thisisouvik/Credent.git
 ```
 
 ---
@@ -212,8 +212,8 @@ cargo test -p lending --test proptest_tests -- --test-threads=1
 Generate a keypair and fund it:
 
 ```bash
-stellar keys generate trustlend-admin --global
-stellar keys address trustlend-admin
+stellar keys generate credent-admin --global
+stellar keys address credent-admin
 # -> GABCDE...
 curl "https://friendbot.stellar.org?addr=GABCDE..."
 ```
@@ -223,7 +223,7 @@ Deploy a specific contract:
 ```bash
 stellar contract deploy \
   --wasm target/wasm32-unknown-unknown/release/lending.wasm \
-  --source trustlend-admin \
+  --source credent-admin \
   --network testnet
 ```
 
@@ -233,7 +233,7 @@ For a full workspace deployment, see `contracts/scripts/deploy.sh`.
 
 ## 5. Running the Test Suite
 
-TrustLend has two separate test suites: **frontend** (TypeScript / vitest) and **smart contracts** (Rust / `cargo test`).
+Credent has two separate test suites: **frontend** (TypeScript / vitest) and **smart contracts** (Rust / `cargo test`).
 
 ### 5.1 Frontend Tests (vitest)
 
@@ -350,7 +350,7 @@ Valid scopes include: `lending`, `escrow`, `governance`, `frontend`, `ci`, `db`,
    ```bash
    git push -u origin feat/lending-add-feature
    ```
-   Then open a PR at `https://github.com/thisisouvik/trustlend-stellar/pulls`
+   Then open a PR at `https://github.com/thisisouvik/Credent/pulls`
 
 4. Ensure CI passes. Respond to reviewer feedback.
 

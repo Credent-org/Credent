@@ -1,15 +1,15 @@
 # Security Policy & Bug Bounty Program
 
-TrustLend is dedicated to ensuring the security and safety of our decentralized lending protocol built on Stellar and Soroban. We welcome white-hat security researchers and developers to inspect our smart contracts, API endpoints, and infrastructure to help identify potential vulnerabilities.
+Credent is dedicated to ensuring the security and safety of our decentralized lending protocol built on Stellar and Soroban. We welcome white-hat security researchers and developers to inspect our smart contracts, API endpoints, and infrastructure to help identify potential vulnerabilities.
 
 ---
 
 ## 1. Reporting a Vulnerability
 
-If you discover a security vulnerability within TrustLend, **do NOT open a public GitHub issue** or publicly disclose the issue until it has been acknowledged, investigated, and remediated by the TrustLend team.
+If you discover a security vulnerability within Credent, **do NOT open a public GitHub issue** or publicly disclose the issue until it has been acknowledged, investigated, and remediated by the Credent team.
 
 ### Secure Disclosure Instructions
-1. **Email:** Send your report securely to `security@trustlend.io` (or submit via GitHub Private Vulnerability Reporting).
+1. **Email:** Send your report securely to `security@credent.io` (or submit via GitHub Private Vulnerability Reporting).
 2. **Details Required:**
    - **Summary:** Concise explanation of the vulnerability and its potential impact.
    - **Component:** The specific smart contract, API endpoint, script, or component affected.
@@ -44,8 +44,8 @@ If you discover a security vulnerability within TrustLend, **do NOT open a publi
 ### Out-of-Scope Assets & Issues
 - **Frontend/UI Bugs:** Visual presentation flaws, CSS issues, or non-security UI bugs without impact on user funds or data.
 - **Denial of Service (DoS):** Volumetric DoS/DDoS attacks against infrastructure or public Stellar RPC endpoints not caused by application design flaws.
-- **Social Engineering:** Phishing, spam, or social engineering attacks targeted at TrustLend maintainers or users.
-- **Third-Party Dependencies:** Vulnerabilities in underlying infrastructure (e.g. Stellar Core, Soroban SDK, Supabase platform) unless directly exploitable through TrustLend code logic.
+- **Social Engineering:** Phishing, spam, or social engineering attacks targeted at Credent maintainers or users.
+- **Third-Party Dependencies:** Vulnerabilities in underlying infrastructure (e.g. Stellar Core, Soroban SDK, Supabase platform) unless directly exploitable through Credent code logic.
 - **Known Issues:** Vulnerabilities already reported, tracked in public issues/PRs, or previously disclosed in security audit reports.
 
 ---
@@ -71,7 +71,7 @@ Bounties are rewarded in **USDC** or equivalent **XLM** based on severity assess
 - Do not access user data or private keys that do not belong to you.
 
 ### Safe Harbor Protection
-TrustLend considers security research conducted in accordance with this policy to be:
+Credent considers security research conducted in accordance with this policy to be:
 - Authorized under applicable anti-hacking laws, and we will not initiate legal action against researchers for good-faith security research.
 - Exempt from restrictions in our Terms of Service that prohibit reverse engineering or probing.
 - Supported and valued as a essential contribution to protocol security.

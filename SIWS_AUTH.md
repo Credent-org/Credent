@@ -13,7 +13,7 @@ that proof into a normal Supabase session.
 
 [SEP-0010](https://stellar.org/protocol/sep-10) defines Web Authentication via a
 challenge-response transaction — it's the same mechanism the SEP-24 fiat-ramp work
-(#21) already uses to auth with an *anchor*. Here TrustLend is both the **server**
+(#21) already uses to auth with an *anchor*. Here Credent is both the **server**
 issuing the challenge and the **relying party** consuming the proof:
 
 ```
@@ -38,7 +38,7 @@ Client                          Backend (/api/auth/siws/*)          Supabase
 rolling a Supabase-compatible JWT (which requires the project's JWT signing
 secret and is brittle across Supabase versions), the backend uses the
 **service-role key** to deterministically provision a Supabase Auth user per
-wallet (`<address>@siws.trustlend.app`, HMAC-derived password) and mints a real
+wallet (`<address>@siws.credent.app`, HMAC-derived password) and mints a real
 session via `signInWithPassword`. The client then adopts it with
 `supabase.auth.setSession(...)`. This is a standard, supported pattern for
 "custom auth providers" on Supabase and requires no extra Supabase config.
@@ -65,7 +65,7 @@ is a "Sign in with Stellar" button next to "Continue with Google" on the auth pa
 ([components/auth/AuthPageClient.tsx](components/auth/AuthPageClient.tsx)). It
 reuses the existing multi-wallet signer
 ([lib/stellar/wallet.ts](lib/stellar/wallet.ts) — Freighter or Albedo) so the
-challenge is signed exactly like any other TrustLend wallet transaction.
+challenge is signed exactly like any other Credent wallet transaction.
 
 ## 4. Backend: signature validation → session (Task 4)
 

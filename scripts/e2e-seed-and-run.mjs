@@ -107,8 +107,8 @@ async function main() {
 
   console.log("Starting seeded E2E run...\n");
 
-  const borrower = await ensureUser(supabase, "e2e.borrower@trustlend.local", "borrower", "E2E Borrower");
-  const lender = await ensureUser(supabase, "e2e.lender@trustlend.local", "lender", "E2E Lender");
+  const borrower = await ensureUser(supabase, "e2e.borrower@credent.local", "borrower", "E2E Borrower");
+  const lender = await ensureUser(supabase, "e2e.lender@credent.local", "lender", "E2E Lender");
   const admin = await ensureUser(supabase, "souvikmandal2406@gmail.com", "admin", "E2E Admin");
 
   // Ensure borrower can request loans.

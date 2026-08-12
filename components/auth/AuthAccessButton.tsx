@@ -71,7 +71,7 @@ export function AuthAccessButton({ className, buttonLabel = "Sign in" }: AuthAcc
               <p className="auth-kicker">Auth setup</p>
               <h2 id="auth-modal-title" className="auth-title font-display">Choose role and sign in</h2>
               <p id="auth-modal-description" className="sr-only">
-                Dialog for signing in to TrustLend as a borrower or lender
+                Dialog for signing in to Credent as a borrower or lender
               </p>
 
             <div className="auth-role-toggle">

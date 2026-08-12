@@ -1,4 +1,4 @@
-const brandName = "TrustLend";
+const brandName = "Credent";
 
 function stripHtmlTags(input: string) {
   let sanitized = input;
@@ -45,7 +45,7 @@ function baseEmail({
         ${button}
       </section>
       <p style="margin:18px 0 0;font-size:12px;color:#7b8192">
-        You are receiving this because your loan status changed on TrustLend.
+        You are receiving this because your loan status changed on Credent.
       </p>
     </main>
   </body>
@@ -108,7 +108,7 @@ export function paymentOverdueTemplate({
 
   return baseEmail({
     title: "Payment Overdue",
-    preview: `Your TrustLend payment due on ${dueDate} is overdue.`,
+    preview: `Your Credent payment due on ${dueDate} is overdue.`,
     body: `<p>Your payment of <strong>${formatAmount(amount)}</strong> was due on <strong>${dueDate}</strong> and is now overdue.</p><p>Please repay as soon as possible to protect your reputation score and avoid default handling.</p>`,
     actionUrl: dashboardUrl,
     actionLabel: "Repay Now",

@@ -11,7 +11,7 @@ const CONTRACT_ID = process.env.NEXT_PUBLIC_POOLED_LENDING_CONTRACT_ID!;
 
 if (!CONTRACT_ID) {
   console.warn(
-    "[TrustLend] NEXT_PUBLIC_POOLED_LENDING_CONTRACT_ID is not set. " +
+    "[Credent] NEXT_PUBLIC_POOLED_LENDING_CONTRACT_ID is not set. " +
       "Deploy the pooled lending contract and add the ID to .env.local"
   );
 }

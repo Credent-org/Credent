@@ -130,8 +130,8 @@ describe("getIndexedAdminReadModel with pagination", () => {
   it("backwards-compatible: calling with just limit returns empty when unconfigured", async () => {
     // Explicitly no env set
     process.env = { ...ORIGINAL_ENV };
-    delete process.env.TRUSTLEND_INDEXER_GRAPHQL_URL;
-    delete process.env.TRUSTLEND_INDEXER_REST_URL;
+    delete process.env.CREDENT_INDEXER_GRAPHQL_URL;
+    delete process.env.CREDENT_INDEXER_REST_URL;
 
     const { getIndexedAdminReadModel } = await import("@/lib/indexer/read-model");
     const result = await getIndexedAdminReadModel(500);
@@ -172,7 +172,7 @@ describe("reader functions accept pagination options (integration)", () => {
   });
 
   it("skips indexer call when mode is disabled (borrower)", async () => {
-    process.env = { ...ORIGINAL_ENV, TRUSTLEND_INDEXER_READ_MODE: "disabled" };
+    process.env = { ...ORIGINAL_ENV, CREDENT_INDEXER_READ_MODE: "disabled" };
 
     const { getIndexedBorrowerReadModel } = await import("@/lib/indexer/read-model");
     const result = await getIndexedBorrowerReadModel({
@@ -187,8 +187,8 @@ describe("reader functions accept pagination options (integration)", () => {
 
   it("returns empty when no indexer URL is configured (borrower)", async () => {
     process.env = { ...ORIGINAL_ENV };
-    delete process.env.TRUSTLEND_INDEXER_GRAPHQL_URL;
-    delete process.env.TRUSTLEND_INDEXER_REST_URL;
+    delete process.env.CREDENT_INDEXER_GRAPHQL_URL;
+    delete process.env.CREDENT_INDEXER_REST_URL;
 
     const { getIndexedBorrowerReadModel } = await import("@/lib/indexer/read-model");
     const result = await getIndexedBorrowerReadModel({
@@ -203,8 +203,8 @@ describe("reader functions accept pagination options (integration)", () => {
 
   it("returns empty when no indexer URL is configured (lender)", async () => {
     process.env = { ...ORIGINAL_ENV };
-    delete process.env.TRUSTLEND_INDEXER_GRAPHQL_URL;
-    delete process.env.TRUSTLEND_INDEXER_REST_URL;
+    delete process.env.CREDENT_INDEXER_GRAPHQL_URL;
+    delete process.env.CREDENT_INDEXER_REST_URL;
 
     const { getIndexedLenderReadModel } = await import("@/lib/indexer/read-model");
     const result = await getIndexedLenderReadModel({
@@ -219,8 +219,8 @@ describe("reader functions accept pagination options (integration)", () => {
 
   it("returns empty when no indexer URL is configured (admin)", async () => {
     process.env = { ...ORIGINAL_ENV };
-    delete process.env.TRUSTLEND_INDEXER_GRAPHQL_URL;
-    delete process.env.TRUSTLEND_INDEXER_REST_URL;
+    delete process.env.CREDENT_INDEXER_GRAPHQL_URL;
+    delete process.env.CREDENT_INDEXER_REST_URL;
 
     const { getIndexedAdminReadModel } = await import("@/lib/indexer/read-model");
     const result = await getIndexedAdminReadModel(500);
@@ -230,8 +230,8 @@ describe("reader functions accept pagination options (integration)", () => {
 
   it("passes cursor-based pagination when after is provided", async () => {
     process.env = { ...ORIGINAL_ENV };
-    delete process.env.TRUSTLEND_INDEXER_GRAPHQL_URL;
-    delete process.env.TRUSTLEND_INDEXER_REST_URL;
+    delete process.env.CREDENT_INDEXER_GRAPHQL_URL;
+    delete process.env.CREDENT_INDEXER_REST_URL;
 
     const { buildPaginationVariables } = await import("@/lib/indexer/read-model");
     const vars = buildPaginationVariables({ limit: 20, after: "cursor-value" });
@@ -241,8 +241,8 @@ describe("reader functions accept pagination options (integration)", () => {
 
   it("accepts PaginationOptions as second arg to getIndexedAdminReadModel", async () => {
     process.env = { ...ORIGINAL_ENV };
-    delete process.env.TRUSTLEND_INDEXER_GRAPHQL_URL;
-    delete process.env.TRUSTLEND_INDEXER_REST_URL;
+    delete process.env.CREDENT_INDEXER_GRAPHQL_URL;
+    delete process.env.CREDENT_INDEXER_REST_URL;
 
     const { getIndexedAdminReadModel } = await import("@/lib/indexer/read-model");
     const result = await getIndexedAdminReadModel(undefined, { limit: 100, offset: 200 });

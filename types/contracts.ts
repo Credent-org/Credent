@@ -1,4 +1,4 @@
-// ─── TrustLend Soroban contract TypeScript types ─────────────────────────────
+// ─── Credent Soroban contract TypeScript types ─────────────────────────────
 // Mirrors the Rust #[contracttype] structs/enums in contracts/*.rs
 
 // ── Reputation ────────────────────────────────────────────────────────────────

@@ -3,7 +3,7 @@ import { TransactionBuilder, Keypair, Networks, Transaction } from "@stellar/ste
 import { enforceRouteRateLimit } from "@/lib/rate-limit";
 
 /**
- * TrustLend Advanced Feature: Fee Sponsorship (Gasless Transactions)
+ * Credent Advanced Feature: Fee Sponsorship (Gasless Transactions)
  * This endpoint allows the platform (Treasury) to sponsor transaction fees for borrowers.
  * By wrapping the user's signed transaction in a FeeBumpTransaction, the platform pays the gas,
  * enabling true "gasless" experiences for users without XLM balances.

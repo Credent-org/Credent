@@ -1,6 +1,6 @@
-# Flash Loans — TrustLend Liquidity Pools
+# Flash Loans — Credent Liquidity Pools
 
-> Implements issue **#70 — [Smart Contracts] Implement flash loan capabilities for TrustLend liquidity pools**
+> Implements issue **#70 — [Smart Contracts] Implement flash loan capabilities for Credent liquidity pools**
 
 Adds uncollateralized, single-transaction flash loans against the Lending
 contract's own token balance, so external protocols can borrow, act, and repay
@@ -42,7 +42,7 @@ pub trait FlashLoanReceiver {
 }
 ```
 
-Any contract wanting to consume a TrustLend flash loan must export a function
+Any contract wanting to consume a Credent flash loan must export a function
 with exactly this signature (`execute_operation`). There is no shared Rust
 dependency needed — Soroban contracts are called by symbol name, the same way
 this codebase already calls the SAC token contract without importing its

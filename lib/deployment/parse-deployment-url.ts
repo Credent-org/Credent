@@ -2,7 +2,7 @@
  * Parses a Vercel deployment URL from the raw CLI output.
  *
  * The `vercel deploy --prebuilt` command outputs the full URL on the final line
- * (e.g. "https://trustlend-project-name.vercel.app").
+ * (e.g. "https://credent-project-name.vercel.app").
  * This function trims surrounding whitespace, discards any informational lines
  * that do not start with "http", and validates the URL.
  */

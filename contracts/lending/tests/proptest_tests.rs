@@ -1,4 +1,4 @@
-//! Property-based tests for the TrustLend lending contract.
+//! Property-based tests for the Credent lending contract.
 //!
 //! These tests use the `proptest` crate to fuzz-test mathematical and
 //! accounting invariants with randomly generated inputs. Unlike Kani

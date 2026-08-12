@@ -1,15 +1,15 @@
 import { WorkspaceFrame } from "@/components/dashboard/WorkspaceFrame";
 import { requireAuthenticatedUser } from "@/lib/auth/session";
 import {
-  getLenderDashboardMetrics,
-  presentLenderMetrics,
+  gecredenterDashboardMetrics,
+  presencredenterMetrics,
 } from "@/lib/dashboard/metrics";
 import { lenderNavLinks } from "@/lib/dashboard/lender-links";
 import { getServerSupabaseClient } from "@/lib/supabase/server";
 
 export default async function LenderRiskPage() {
   const { user } = await requireAuthenticatedUser("lender");
-  const metrics = await getLenderDashboardMetrics(user.id);
+  const metrics = await gecredenterDashboardMetrics(user.id);
 
   const supabase = await getServerSupabaseClient();
   const [loansRes, profileRes] = supabase
@@ -37,7 +37,7 @@ export default async function LenderRiskPage() {
       description="Monitor loan maturity and defaults to keep portfolio risk within target bounds."
       email={user.email ?? null}
       userName={String(user.user_metadata?.full_name ?? profile?.full_name ?? "")}
-      metrics={presentLenderMetrics(metrics)}
+      metrics={presencredenterMetrics(metrics)}
       currentPath="/dashboard/lender/risk"
       links={lenderNavLinks}
     >

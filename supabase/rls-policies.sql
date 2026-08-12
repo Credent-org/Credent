@@ -1,5 +1,5 @@
 -- =============================================================================
--- TrustLend — Supabase RLS Policies
+-- Credent — Supabase RLS Policies
 -- Run these in your Supabase SQL Editor (Dashboard → SQL Editor → New query)
 -- These replace the need for the service role key in most read queries.
 -- =============================================================================

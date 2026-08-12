@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { parseDeploymentUrl, buildPreviewComment } from "./parse-deployment-url";
 
-const VALID_URL = "https://trustlend-preview-abc123.vercel.app";
+const VALID_URL = "https://credent-preview-abc123.vercel.app";
 
 describe("parseDeploymentUrl", () => {
   // ── Success path ──────────────────────────────────────────────

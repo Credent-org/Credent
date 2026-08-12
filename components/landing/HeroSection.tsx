@@ -106,7 +106,7 @@ export function HeroSection({ content, isAuthenticated = false }: HeroSectionPro
           <motion.div
             className="hero-trust-pills"
             role="list"
-            aria-label="TrustLend highlights"
+            aria-label="Credent highlights"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}

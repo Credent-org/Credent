@@ -30,7 +30,7 @@
 
 ## 1. Overview
 
-TrustLend uses a **dual interest-rate model** that borrowers can choose between:
+Credent uses a **dual interest-rate model** that borrowers can choose between:
 
 | Model | Behaviour | Best For |
 |---|---|---|

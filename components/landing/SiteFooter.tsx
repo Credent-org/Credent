@@ -23,7 +23,7 @@ export function SiteFooter({ links }: SiteFooterProps) {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-          <h2 className="font-display site-footer-brand">TrustLend</h2>
+          <h2 className="font-display site-footer-brand">Credent</h2>
           <p className="site-footer-tagline">Credit infrastructure built on real behavior, not collateral bias.</p>
           <p className="site-footer-subtext">
             Borrowers and lenders collaborate in one transparent network where every repayment strengthens the next
@@ -65,7 +65,7 @@ export function SiteFooter({ links }: SiteFooterProps) {
           >
             <h3 className="site-footer-heading">Contact</h3>
             <ul className="site-footer-list mt-3 space-y-2 text-sm">
-              <li>support@trustlend.io</li>
+              <li>support@credent.io</li>
               <li>Global community-first network</li>
               <li>Version v1.2.3</li>
             </ul>
@@ -80,7 +80,7 @@ export function SiteFooter({ links }: SiteFooterProps) {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
       >
-        <p>© 2026 TrustLend. All rights reserved.</p>
+        <p>© 2026 Credent. All rights reserved.</p>
         <p>Secure role-based dashboards for lenders and borrowers.</p>
       </motion.div>
     </motion.footer>

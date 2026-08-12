@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Upgrade Script for TrustLend Soroban Smart Contracts
+# Upgrade Script for Credent Soroban Smart Contracts
 # Usage: ./upgrade_contract.sh <CONTRACT_CRATE> <CONTRACT_ID_ENV_VAR> <ADMIN_SECRET_KEY>
 # Example: ./upgrade_contract.sh lending LENDING_CONTRACT_ID SABC...
 

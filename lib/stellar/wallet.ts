@@ -65,8 +65,8 @@ function ensureKit(): void {
         new WalletConnectModule({
           projectId,
           metadata: {
-            name: "TrustLend",
-            description: "TrustLend - P2P Lending on Stellar",
+            name: "Credent",
+            description: "Credent - P2P Lending on Stellar",
             url: window.location.origin,
             icons: ["https://stellar.org/favicon.ico"]
           }

@@ -3,7 +3,7 @@
 > Implements issue **#22 — [Smart Contracts] Implement an automated DAO governance module for platform fees**
 > and the README "Vision" item *DAO Governance*.
 
-TrustLend's platform fee was a hard-coded `1%` of interest. This module decentralizes
+Credent's platform fee was a hard-coded `1%` of interest. This module decentralizes
 that decision: members **propose**, **vote** (weighted by on-chain reputation), and on
 success the fee change is **executed automatically** via a cross-contract call. The
 fee can be changed **only** through a passed vote — there is no admin override.

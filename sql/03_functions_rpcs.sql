@@ -1,4 +1,4 @@
-﻿-- TrustLend task completion RPC
+-- Credent task completion RPC
 -- Awards trust points through a security-definer function so task claims do not depend on reputation_events insert RLS.
 
 create or replace function public.complete_platform_task(p_task_id text)
@@ -60,7 +60,7 @@ end;
 $$;
 
 grant execute on function public.complete_platform_task(text) to authenticated;
--- TrustLend hotfix: ensure activate_loan_funding RPC exists and is visible to PostgREST
+-- Credent hotfix: ensure activate_loan_funding RPC exists and is visible to PostgREST
 -- Apply this in Supabase SQL editor if lenders see:
 -- "Could not find the function public.activate_loan_funding(...) in the schema cache"
 

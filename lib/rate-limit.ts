@@ -130,7 +130,7 @@ async function getUpstashRateLimit(
     limiter = new Ratelimit({
       redis,
       limiter: Ratelimit.fixedWindow(policy.limit, policy.window),
-      prefix: `trustlend:ratelimit:${pathname}`,
+      prefix: `credent:ratelimit:${pathname}`,
       analytics: false,
     });
     ratelimiters.set(cacheKey, limiter);

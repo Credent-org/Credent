@@ -43,7 +43,7 @@ export function AuthPageClient() {
         <div className="auth-page-left-inner">
           <Link href="/" className="auth-page-logo">
             <span className="site-logo-orb" />
-            <span className="font-display auth-page-logo-text">TrustLend</span>
+            <span className="font-display auth-page-logo-text">Credent</span>
           </Link>
 
           <div className="auth-page-left-body">
@@ -68,7 +68,7 @@ export function AuthPageClient() {
                 <div className="auth-page-role-badge" style={{ background: "rgba(255,255,255,0.1)", borderColor: "rgba(255,255,255,0.2)" }}>
                   <span className="auth-page-role-emoji">👋</span>
                   <span className="auth-page-role-badge-label" style={{ color: "#ffffff" }}>
-                    Welcome to TrustLend
+                    Welcome to Credent
                   </span>
                 </div>
                 <p className="auth-page-left-tagline">
@@ -128,7 +128,7 @@ export function AuthPageClient() {
           )}
 
           <p className="auth-page-footnote mt-8">
-            By continuing, you agree to TrustLend&apos;s{" "}
+            By continuing, you agree to Credent&apos;s{" "}
             <a href="#" className="auth-page-footnote-link">Terms</a> and{" "}
             <a href="#" className="auth-page-footnote-link">Privacy Policy</a>.
           </p>

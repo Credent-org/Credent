@@ -1,4 +1,4 @@
-# Formal Verification for TrustLend Lending Protocol
+# Formal Verification for Credent Lending Protocol
 
 ## Why Formal Verification
 

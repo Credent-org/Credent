@@ -9,7 +9,7 @@ import { useTheme } from 'next-themes'
  *
  * A header button that flips the app between light and dark mode. The choice
  * is delegated to next-themes, which persists it to localStorage (under the
- * `trustlend-theme` key) and applies the `.dark` class before paint, so the
+ * `credent-theme` key) and applies the `.dark` class before paint, so the
  * preference survives reloads with no flash of unstyled content.
  *
  * `resolvedTheme` is only knowable on the client (it depends on localStorage

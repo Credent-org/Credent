@@ -21,7 +21,7 @@ const WALLET_OPTIONS: Array<{
   {
     provider: "freighter",
     title: "Freighter",
-    description: "Use the browser extension wallet already supported by TrustLend.",
+    description: "Use the browser extension wallet already supported by Credent.",
   },
   {
     provider: "albedo",
@@ -113,7 +113,7 @@ export function WalletSelectionModal({
                 Select a Stellar wallet
               </h3>
               <p id="wallet-modal-description" style={{ margin: "0.45rem 0 0", fontSize: "0.9rem", lineHeight: 1.5, color: "#6b7280" }}>
-                Choose how you want to connect and sign transactions on TrustLend.
+                Choose how you want to connect and sign transactions on Credent.
               </p>
             </div>
             <button

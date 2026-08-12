@@ -3,8 +3,8 @@ import { LenderForms } from "@/components/dashboard/LenderForms";
 import { InteractiveLineChart } from "@/components/dashboard/InteractiveLineChart";
 import { requireAuthenticatedUser } from "@/lib/auth/session";
 import {
-  getLenderDashboardMetrics,
-  presentLenderMetrics,
+  gecredenterDashboardMetrics,
+  presencredenterMetrics,
 } from "@/lib/dashboard/metrics";
 import { getServerSupabaseClient } from "@/lib/supabase/server";
 import { lenderNavLinks } from "@/lib/dashboard/lender-links";
@@ -17,7 +17,7 @@ import { STELLAR_TESTNET } from "@/lib/stellar/testnet";
 
 export default async function LenderPoolsPage() {
   const { user } = await requireAuthenticatedUser("lender");
-  const metrics = await getLenderDashboardMetrics(user.id);
+  const metrics = await gecredenterDashboardMetrics(user.id);
   const supabase = await getServerSupabaseClient();
 
   const walletAddress =
@@ -133,7 +133,7 @@ export default async function LenderPoolsPage() {
       userName={String(
         user.user_metadata?.full_name ?? profile?.full_name ?? "",
       )}
-      metrics={presentLenderMetrics(metrics)}
+      metrics={presencredenterMetrics(metrics)}
       currentPath="/dashboard/lender/pools"
       profilePath="/dashboard/lender/profile"
       showProfileAlert={false}

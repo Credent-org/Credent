@@ -22,20 +22,20 @@ export function SiteHeader({ items, isAuthenticated = false }: SiteHeaderProps) 
         <motion.a
           href="#home"
           className="site-logo-wrap"
-          aria-label="TrustLend home"
+          aria-label="Credent home"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
           <Image
             src="/logo.png"
-            alt="TrustLend Logo"
+            alt="Credent Logo"
             width={56}
             height={56}
             priority
             style={{ width: "56px", height: "56px", borderRadius: "50%", objectFit: "cover" }}
           />
           <span>
-            <strong className="font-display site-logo-title">TrustLend</strong>
+            <strong className="font-display site-logo-title">Credent</strong>
             <small className="site-logo-subtitle">Behavior-first credit network</small>
           </span>
         </motion.a>

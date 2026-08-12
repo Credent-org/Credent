@@ -1,5 +1,5 @@
 -- =====================================================================
--- TrustLend: Issue #118 — KYC Provider Integration
+-- Credent: Issue #118 — KYC Provider Integration
 -- Adds columns for 3rd-party KYC provider (SumSub-compatible) linkage
 -- and regulated pool access flag.
 -- Apply after 01_core_schema.sql

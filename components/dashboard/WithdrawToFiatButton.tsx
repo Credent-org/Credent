@@ -139,7 +139,7 @@ export function WithdrawToFiatButton({ walletAddress }: WithdrawToFiatButtonProp
       setInteractiveUrl(session.url);
       const popup = window.open(
         session.url,
-        "trustlend_sep24",
+        "credent_sep24",
         "width=480,height=720,menubar=no,toolbar=no"
       );
       if (!popup) {

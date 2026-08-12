@@ -1,7 +1,7 @@
 import type { UserConfig } from "@commitlint/types";
 
 /**
- * commitlint configuration for TrustLend.
+ * commitlint configuration for Credent.
  *
  * Extends `@commitlint/config-conventional` with additional scopes and types
  * relevant to the project's stack (Soroban, Stellar, Next.js, Supabase).

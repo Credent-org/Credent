@@ -1,5 +1,5 @@
 /**
- * Currency & token formatting utilities for TrustLend.
+ * Currency & token formatting utilities for Credent.
  *
  * All display-layer functions use `Intl.NumberFormat` so thousands separators
  * and decimal symbols automatically follow the user's locale (e.g. 1,234.56

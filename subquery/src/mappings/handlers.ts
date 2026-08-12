@@ -1,4 +1,4 @@
-// TrustLend — SubQuery Soroban Event Mapping Handlers
+// Credent — SubQuery Soroban Event Mapping Handlers
 //
 // Maps on-chain Soroban contract events to the GraphQL entities defined in
 // schema.graphql. Handles events from three contracts:

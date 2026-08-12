@@ -1,4 +1,4 @@
-﻿-- TrustLend RLS policies for Supabase
+-- Credent RLS policies for Supabase
 -- Apply after 001_schema.sql
 
 -- =========================
@@ -336,7 +336,7 @@ on public.external_verifications
 for all
 using (public.is_admin())
 with check (public.is_admin());
--- TrustLend RLS Fix v2: Eliminate infinite recursion + fix "new row violates RLS" on UPDATE
+-- Credent RLS Fix v2: Eliminate infinite recursion + fix "new row violates RLS" on UPDATE
 -- 
 
 -- =====================================================================
@@ -426,7 +426,7 @@ ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS date_of_birth date;
 ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS kyc_submitted_at timestamptz;
 ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS government_id_ipfs_hash text;
 ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS government_id_url text;
--- TrustLend MVP Security Hardening
+-- Credent MVP Security Hardening
 -- Purpose:
 -- 1) Prevent users from self-escalating role/kyc/risk via profile updates.
 -- 2) Keep normal profile field updates working for authenticated users.
@@ -527,7 +527,7 @@ on public.lending_pools
 for all
 using (public.is_admin())
 with check (public.is_admin());
--- TrustLend KYC Storage RLS
+-- Credent KYC Storage RLS
 -- Grants authenticated users access to their own KYC uploads without using a service-role key.
 
 -- Ensure the KYC bucket exists and remains private.
@@ -579,7 +579,7 @@ on storage.objects
 for delete
 to authenticated
 using (false);
--- TrustLend migration: remove service-role dependence from app flows.
+-- Credent migration: remove service-role dependence from app flows.
 -- Replaces privileged writes with guarded RPCs and a reputation snapshot trigger.
 
 -- -----------------------------------------------------------------------------

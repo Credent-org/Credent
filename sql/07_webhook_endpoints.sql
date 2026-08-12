@@ -1,4 +1,4 @@
--- TrustLend schema for Webhook Endpoints
+-- Credent schema for Webhook Endpoints
 -- Add these columns to store Discord/Telegram webhook integrations
 
 CREATE TABLE IF NOT EXISTS public.webhook_endpoints (

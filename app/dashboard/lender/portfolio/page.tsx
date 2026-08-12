@@ -1,13 +1,13 @@
 import { WorkspaceFrame } from "@/components/dashboard/WorkspaceFrame";
 import { requireAuthenticatedUser } from "@/lib/auth/session";
-import { getLenderDashboardMetrics, presentLenderMetrics } from "@/lib/dashboard/metrics";
+import { gecredenterDashboardMetrics, presencredenterMetrics } from "@/lib/dashboard/metrics";
 import { getServerSupabaseClient, getServiceRoleClient } from "@/lib/supabase/server";
 import { lenderNavLinks } from "@/lib/dashboard/lender-links";
 import { formatCurrency, formatXlmPrecise } from "@/lib/utils/formatting";
 
 export default async function LenderPortfolioPage() {
   const { user } = await requireAuthenticatedUser("lender");
-  const metrics = await getLenderDashboardMetrics(user.id);
+  const metrics = await gecredenterDashboardMetrics(user.id);
 
   const supabase = await getServerSupabaseClient();
   const srClient = getServiceRoleClient();
@@ -70,7 +70,7 @@ export default async function LenderPortfolioPage() {
       description="Track total profits across automated pools and direct marketplace loans."
       email={user.email ?? null}
       userName={String(user.user_metadata?.full_name ?? profile?.full_name ?? "")}
-      metrics={presentLenderMetrics(metrics)}
+      metrics={presencredenterMetrics(metrics)}
       currentPath="/dashboard/lender/portfolio"
       links={lenderNavLinks}
     >

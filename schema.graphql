@@ -1,4 +1,4 @@
-# SubQuery Schema definition for TrustLend events
+# SubQuery Schema definition for Credent events
 # TODO (SubQuery Indexer Migration):
 # Define schema mappings for Deposit, Borrow, and Liquidation events.
 

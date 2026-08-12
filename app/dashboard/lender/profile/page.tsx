@@ -2,8 +2,8 @@ import { WorkspaceFrame } from "@/components/dashboard/WorkspaceFrame";
 import { ProfileSettingsForm } from "@/components/dashboard/ProfileSettingsForm";
 import { requireAuthenticatedUser } from "@/lib/auth/session";
 import {
-  getLenderDashboardMetrics,
-  presentLenderMetrics,
+  gecredenterDashboardMetrics,
+  presencredenterMetrics,
 } from "@/lib/dashboard/metrics";
 import { lenderNavLinks } from "@/lib/dashboard/lender-links";
 import { getServerSupabaseClient } from "@/lib/supabase/server";
@@ -20,7 +20,7 @@ const KYC_CONFIG: Record<
 
 export default async function LenderProfilePage() {
   const { user } = await requireAuthenticatedUser("lender");
-  const metrics = await getLenderDashboardMetrics(user.id);
+  const metrics = await gecredenterDashboardMetrics(user.id);
 
   const supabase = await getServerSupabaseClient();
   const { data: profile } = supabase
@@ -42,7 +42,7 @@ export default async function LenderProfilePage() {
       description="Update your personal details and complete required compliance checks to manage lending pools."
       email={user.email ?? null}
       userName={String(user.user_metadata?.full_name ?? profile?.full_name ?? "")}
-      metrics={presentLenderMetrics(metrics)}
+      metrics={presencredenterMetrics(metrics)}
       currentPath="/dashboard/lender/profile"
       links={lenderNavLinks}
     >

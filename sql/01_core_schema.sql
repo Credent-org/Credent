@@ -1,4 +1,4 @@
--- TrustLend core schema for Supabase
+-- Credent core schema for Supabase
 -- Apply first
 
 create extension if not exists pgcrypto;
@@ -431,7 +431,7 @@ ADD COLUMN IF NOT EXISTS wallet_address TEXT;
 
 CREATE INDEX IF NOT EXISTS idx_profiles_wallet_address
 ON public.profiles(wallet_address);
--- TrustLend task-completion reputation key migration
+-- Credent task-completion reputation key migration
 -- Stores task slugs in source_key so task completion events do not depend on UUID casting.
 
 alter table public.reputation_events
@@ -439,7 +439,7 @@ alter table public.reputation_events
 
 create index if not exists idx_rep_events_source_key
   on public.reputation_events(source_type, source_key);
--- TRUSTLEND: KYC (Know Your Customer) Verification Schema
+-- CREDENT: KYC (Know Your Customer) Verification Schema
 -- Add these columns to the existing 'profiles' table in Supabase
 
 -- 1. Add KYC verification columns to profiles table

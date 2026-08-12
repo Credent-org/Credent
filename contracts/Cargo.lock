@@ -296,6 +296,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "credent_airdrop"
+version = "0.1.0"
+dependencies = [
+ "credent_token",
+ "soroban-sdk",
+]
+
+[[package]]
+name = "credent_token"
+version = "0.1.0"
+dependencies = [
+ "soroban-sdk",
+]
+
+[[package]]
+name = "credent_vesting"
+version = "0.1.0"
+dependencies = [
+ "credent_token",
+ "soroban-sdk",
+]
+
+[[package]]
 name = "crypto-bigint"
 version = "0.5.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1632,29 +1655,6 @@ checksum = "2e70e4c5a0e0a8a4823ad65dfe1a6930e4f4d756dcd9dd7939022b5e8c501215"
 dependencies = [
  "num-conv",
  "time-core",
-]
-
-[[package]]
-name = "tlend_airdrop"
-version = "0.1.0"
-dependencies = [
- "soroban-sdk",
- "tlend_token",
-]
-
-[[package]]
-name = "tlend_token"
-version = "0.1.0"
-dependencies = [
- "soroban-sdk",
-]
-
-[[package]]
-name = "tlend_vesting"
-version = "0.1.0"
-dependencies = [
- "soroban-sdk",
- "tlend_token",
 ]
 
 [[package]]

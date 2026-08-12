@@ -410,7 +410,7 @@ export default async function BorrowerDashboardPage() {
                 ? "You're fully verified and ready to go. Submit your first loan request and get funded on Stellar."
                 : profileComplete
                 ? "Your profile is complete and your KYC documents are being reviewed by our team. You'll be notified once approved."
-                : "Finish setting up your profile and complete KYC verification to unlock borrowing on TrustLend."}
+                : "Finish setting up your profile and complete KYC verification to unlock borrowing on Credent."}
             </p>
             <a
               href={canApplyLoan ? "/dashboard/borrower/loans" : "/dashboard/borrower/profile"}

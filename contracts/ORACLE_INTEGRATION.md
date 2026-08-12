@@ -3,7 +3,7 @@
 > Implements issue **#20 — [Smart Contracts] Implement Decentralized Credit Score Oracle integration**
 > and the README "Vision" item *Decentralized Credit Oracles*.
 
-TrustLend lends under-collateralized capital based on **on-chain reputation**. That
+Credent lends under-collateralized capital based on **on-chain reputation**. That
 reputation only grows from on-chain loan history, which is a cold-start problem for
 new borrowers. This oracle pattern lets us bridge **verified Web2 / off-chain data**
 (utility bills, mobile-money / telecom history, banking cash-flow) into the
@@ -126,8 +126,8 @@ re-derives the loan boost, so the trust boundary stays on-chain.
 
 1. Generate an oracle key and fund it on testnet:
    ```bash
-   stellar keys generate trustlend-oracle --global
-   export ORACLE_ADDRESS=$(stellar keys address trustlend-oracle)
+   stellar keys generate credent-oracle --global
+   export ORACLE_ADDRESS=$(stellar keys address credent-oracle)
    curl "https://friendbot.stellar.org/?addr=$ORACLE_ADDRESS"
    ```
 2. Deploy (the deploy script auto-registers the oracle when `ORACLE_ADDRESS` is set):
@@ -136,7 +136,7 @@ re-derives the loan boost, so the trust boundary stays on-chain.
    ```
    Or register manually:
    ```bash
-   stellar contract invoke --id <REPUTATION_ID> --source trustlend-admin --network testnet \
+   stellar contract invoke --id <REPUTATION_ID> --source credent-admin --network testnet \
      -- set_oracle --admin <ADMIN_ADDRESS> --oracle <ORACLE_ADDRESS>
    ```
 3. Put `NEXT_PUBLIC_ORACLE_ADDRESS` and `ORACLE_SECRET_KEY` in `.env.local`

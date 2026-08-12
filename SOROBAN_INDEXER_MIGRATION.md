@@ -1,6 +1,6 @@
 # Soroban Event Indexer Migration
 
-TrustLend can read dashboard loan, reputation, and escrow state from a Soroban
+Credent can read dashboard loan, reputation, and escrow state from a Soroban
 event indexer while keeping Supabase as the migration fallback.
 
 ## Contracts To Index
@@ -90,10 +90,10 @@ Recommended escrow event fields:
 Use `.env` values:
 
 ```env
-TRUSTLEND_INDEXER_READ_MODE=fallback
-TRUSTLEND_INDEXER_GRAPHQL_URL=https://your-indexer/graphql
-TRUSTLEND_INDEXER_REST_URL=
-TRUSTLEND_INDEXER_API_KEY=
+CREDENT_INDEXER_READ_MODE=fallback
+CREDENT_INDEXER_GRAPHQL_URL=https://your-indexer/graphql
+CREDENT_INDEXER_REST_URL=
+CREDENT_INDEXER_API_KEY=
 ```
 
 `fallback` mode tries the indexer first and falls back to Supabase if the
@@ -103,11 +103,11 @@ subgraph is fully caught up. Use `disabled` to force the old Supabase reads.
 If your GraphQL schema differs from the default collection names or filter
 syntax, set any of these variables with a full GraphQL document:
 
-- `TRUSTLEND_INDEXER_BORROWER_LOANS_QUERY`
-- `TRUSTLEND_INDEXER_LENDER_LOANS_QUERY`
-- `TRUSTLEND_INDEXER_ADMIN_LOANS_QUERY`
-- `TRUSTLEND_INDEXER_REPUTATION_EVENTS_QUERY`
-- `TRUSTLEND_INDEXER_ESCROW_EVENTS_QUERY`
+- `CREDENT_INDEXER_BORROWER_LOANS_QUERY`
+- `CREDENT_INDEXER_LENDER_LOANS_QUERY`
+- `CREDENT_INDEXER_ADMIN_LOANS_QUERY`
+- `CREDENT_INDEXER_REPUTATION_EVENTS_QUERY`
+- `CREDENT_INDEXER_ESCROW_EVENTS_QUERY`
 
 REST deployments should expose:
 

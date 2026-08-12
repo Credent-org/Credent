@@ -2,8 +2,8 @@ import { WorkspaceFrame } from "@/components/dashboard/WorkspaceFrame";
 import { LoanMarketplace } from "@/components/dashboard/LoanMarketplace";
 import { requireAuthenticatedUser } from "@/lib/auth/session";
 import {
-  getLenderDashboardMetrics,
-  presentLenderMetrics,
+  gecredenterDashboardMetrics,
+  presencredenterMetrics,
 } from "@/lib/dashboard/metrics";
 import { lenderNavLinks } from "@/lib/dashboard/lender-links";
 import {
@@ -84,7 +84,7 @@ export default async function LenderMarketplacePage({
   const { user } = await requireAuthenticatedUser("lender");
   const walletAddress =
     String(user.user_metadata?.wallet_address ?? "") || null;
-  const metrics = await getLenderDashboardMetrics(user.id);
+  const metrics = await gecredenterDashboardMetrics(user.id);
 
   const supabase = await getServerSupabaseClient();
   const srClient = getServiceRoleClient();
@@ -208,7 +208,7 @@ export default async function LenderMarketplacePage({
       userName={String(
         user.user_metadata?.full_name ?? profile?.full_name ?? "",
       )}
-      metrics={presentLenderMetrics(metrics)}
+      metrics={presencredenterMetrics(metrics)}
       currentPath="/dashboard/lender/marketplace"
       profilePath="/dashboard/lender/profile"
       showProfileAlert={false}

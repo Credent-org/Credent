@@ -76,13 +76,13 @@ const DEFAULT_LIMIT = 50;
 const DEFAULT_OFFSET = 0;
 
 function getMode(): IndexerMode {
-  const raw = (process.env.TRUSTLEND_INDEXER_READ_MODE ?? "fallback").toLowerCase();
+  const raw = (process.env.CREDENT_INDEXER_READ_MODE ?? "fallback").toLowerCase();
   if (raw === "required" || raw === "disabled") return raw;
   return "fallback";
 }
 
 export function isIndexerConfigured(): boolean {
-  return Boolean(process.env.TRUSTLEND_INDEXER_GRAPHQL_URL || process.env.TRUSTLEND_INDEXER_REST_URL);
+  return Boolean(process.env.CREDENT_INDEXER_GRAPHQL_URL || process.env.CREDENT_INDEXER_REST_URL);
 }
 
 export function isIndexerRequired(): boolean {
@@ -91,7 +91,7 @@ export function isIndexerRequired(): boolean {
 
 function getHeaders(): HeadersInit {
   const headers: HeadersInit = { "content-type": "application/json" };
-  const token = process.env.TRUSTLEND_INDEXER_API_KEY;
+  const token = process.env.CREDENT_INDEXER_API_KEY;
   if (token) {
     headers.authorization = `Bearer ${token}`;
   }
@@ -121,7 +121,7 @@ async function requestGraphql<T>(
   variables: Record<string, unknown>,
   preferredKey: string,
 ): Promise<T[]> {
-  const url = process.env.TRUSTLEND_INDEXER_GRAPHQL_URL;
+  const url = process.env.CREDENT_INDEXER_GRAPHQL_URL;
   if (!url) return [];
 
   const res = await fetch(url, {
@@ -142,7 +142,7 @@ async function requestRest<T>(
   params: Record<string, string | number | undefined | null>,
   preferredKey: string,
 ): Promise<T[]> {
-  const base = process.env.TRUSTLEND_INDEXER_REST_URL;
+  const base = process.env.CREDENT_INDEXER_REST_URL;
   if (!base) return [];
 
   const url = new URL(path.replace(/^\//, ""), base.endsWith("/") ? base : `${base}/`);
@@ -199,7 +199,7 @@ async function readIndexed<T>({
   if (getMode() === "disabled" || !isIndexerConfigured()) return [];
 
   const configuredQuery = process.env[graphqlQueryEnv];
-  if (process.env.TRUSTLEND_INDEXER_GRAPHQL_URL) {
+  if (process.env.CREDENT_INDEXER_GRAPHQL_URL) {
     return requestGraphql<T>(configuredQuery || graphqlQuery, variables, preferredKey);
   }
   return requestRest<T>(restPath, restParams, preferredKey);
@@ -271,7 +271,7 @@ function normalizeEscrowEvent(row: Record<string, unknown>): IndexedEscrowEvent 
 // ─────────────────────────────────────────────────────────────────────────────
 
 const BORROWER_LOANS_QUERY = `
-  query TrustLendBorrowerLoans(
+  query CredentBorrowerLoans(
     $userId: String, $walletAddress: String,
     $limit: Int!, $offset: Int, $after: String
   ) {
@@ -290,7 +290,7 @@ const BORROWER_LOANS_QUERY = `
 `;
 
 const LENDER_LOANS_QUERY = `
-  query TrustLendLenderLoans(
+  query CredencredenterLoans(
     $userId: String, $walletAddress: String,
     $limit: Int!, $offset: Int, $after: String
   ) {
@@ -309,7 +309,7 @@ const LENDER_LOANS_QUERY = `
 `;
 
 const ADMIN_LOANS_QUERY = `
-  query TrustLendAdminLoans($limit: Int!, $offset: Int, $after: String) {
+  query CredentAdminLoans($limit: Int!, $offset: Int, $after: String) {
     loans(first: $limit, offset: $offset, after: $after, orderBy: createdAt, orderDirection: desc) {
       id borrowerId borrowerAddress lenderId lenderAddress status principalAmount repaidAmount
       aprBps durationDays dueAt createdAt requestedAt escrowId
@@ -318,7 +318,7 @@ const ADMIN_LOANS_QUERY = `
 `;
 
 const REPUTATION_EVENTS_QUERY = `
-  query TrustLendReputationEvents(
+  query CredentReputationEvents(
     $userId: String, $walletAddress: String,
     $limit: Int!, $offset: Int, $after: String
   ) {
@@ -336,7 +336,7 @@ const REPUTATION_EVENTS_QUERY = `
 `;
 
 const ESCROW_EVENTS_QUERY = `
-  query TrustLendEscrowEvents(
+  query CredentEscrowEvents(
     $walletAddress: String,
     $limit: Int!, $offset: Int, $after: String
   ) {
@@ -373,7 +373,7 @@ export async function getIndexedBorrowerReadModel(options: ReadOptions): Promise
   const [loans, reputationEvents] = await Promise.all([
     readIndexed<Record<string, unknown>>({
       graphqlQuery: BORROWER_LOANS_QUERY,
-      graphqlQueryEnv: "TRUSTLEND_INDEXER_BORROWER_LOANS_QUERY",
+      graphqlQueryEnv: "CREDENT_INDEXER_BORROWER_LOANS_QUERY",
       restPath: "/loans",
       variables,
       restParams,
@@ -381,7 +381,7 @@ export async function getIndexedBorrowerReadModel(options: ReadOptions): Promise
     }),
     readIndexed<Record<string, unknown>>({
       graphqlQuery: REPUTATION_EVENTS_QUERY,
-      graphqlQueryEnv: "TRUSTLEND_INDEXER_REPUTATION_EVENTS_QUERY",
+      graphqlQueryEnv: "CREDENT_INDEXER_REPUTATION_EVENTS_QUERY",
       restPath: "/reputation-events",
       variables,
       restParams,
@@ -412,7 +412,7 @@ export async function getIndexedLenderReadModel(options: ReadOptions): Promise<I
   const [loans, escrowEvents] = await Promise.all([
     readIndexed<Record<string, unknown>>({
       graphqlQuery: LENDER_LOANS_QUERY,
-      graphqlQueryEnv: "TRUSTLEND_INDEXER_LENDER_LOANS_QUERY",
+      graphqlQueryEnv: "CREDENT_INDEXER_LENDER_LOANS_QUERY",
       restPath: "/loans",
       variables,
       restParams,
@@ -420,7 +420,7 @@ export async function getIndexedLenderReadModel(options: ReadOptions): Promise<I
     }),
     readIndexed<Record<string, unknown>>({
       graphqlQuery: ESCROW_EVENTS_QUERY,
-      graphqlQueryEnv: "TRUSTLEND_INDEXER_ESCROW_EVENTS_QUERY",
+      graphqlQueryEnv: "CREDENT_INDEXER_ESCROW_EVENTS_QUERY",
       restPath: "/escrow-events",
       variables,
       restParams: {
@@ -448,7 +448,7 @@ export async function getIndexedAdminReadModel(
 
   const loans = await readIndexed<Record<string, unknown>>({
     graphqlQuery: ADMIN_LOANS_QUERY,
-    graphqlQueryEnv: "TRUSTLEND_INDEXER_ADMIN_LOANS_QUERY",
+    graphqlQueryEnv: "CREDENT_INDEXER_ADMIN_LOANS_QUERY",
     restPath: "/loans",
     variables,
     restParams,

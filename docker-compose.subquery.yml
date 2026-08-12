@@ -1,7 +1,7 @@
 version: "3.8"
 
 # ──────────────────────────────────────────────────────────────────────────────
-# TrustLend — SubQuery Soroban Indexer Docker Compose
+# Credent — SubQuery Soroban Indexer Docker Compose
 # ──────────────────────────────────────────────────────────────────────────────
 # Spins up three services:
 #   1. postgres     — Persistent store for indexed chain data
@@ -34,7 +34,7 @@ services:
   # ── PostgreSQL ────────────────────────────────────────────────────────────
   postgres:
     image: postgres:16-alpine
-    container_name: trustlend-subquery-db
+    container_name: credent-subquery-db
     restart: unless-stopped
     ports:
       # Host port 5433 avoids conflict with any local PostgreSQL on 5432.
@@ -55,14 +55,14 @@ services:
     build:
       context: .
       dockerfile: subquery/Dockerfile
-    container_name: trustlend-subquery-node
+    container_name: credent-subquery-node
     restart: unless-stopped
     depends_on:
       postgres:
         condition: service_healthy
     environment:
       <<: *env-defaults
-      DB_SCHEMA: trustlend
+      DB_SCHEMA: credent
       # Network configuration
       CHAIN_ID: ${SUBQUERY_CHAIN_ID:-Test SDF Network ; September 2015}
       NETWORK_ENDPOINT: ${SUBQUERY_NETWORK_ENDPOINT:-https://soroban-testnet.stellar.org}
@@ -76,7 +76,7 @@ services:
       - subquery-dist:/app/dist
     command:
       - "-f=/app"
-      - "--db-schema=trustlend"
+      - "--db-schema=credent"
       - "--db-host=postgres"
       - "--db-port=5432"
       - "--db-user=${SUBQUERY_DB_USER:-postgres}"
@@ -94,7 +94,7 @@ services:
   # ── GraphQL Engine (Query Service) ────────────────────────────────────────
   graphql-engine:
     image: onfinality/subql-query:latest
-    container_name: trustlend-subquery-graphql
+    container_name: credent-subquery-graphql
     restart: unless-stopped
     depends_on:
       - postgres
@@ -103,10 +103,10 @@ services:
       - "3001:3000"
     environment:
       <<: *env-defaults
-      DB_SCHEMA: trustlend
+      DB_SCHEMA: credent
     command:
-      - "--name=trustlend"
-      - "--db-schema=trustlend"
+      - "--name=credent"
+      - "--db-schema=credent"
       - "--db-host=postgres"
       - "--db-port=5432"
       - "--db-user=${SUBQUERY_DB_USER:-postgres}"

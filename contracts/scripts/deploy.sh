@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # =============================================================================
-# TrustLend – Soroban Contract Deployment Script
+# Credent – Soroban Contract Deployment Script
 # =============================================================================
 # Prerequisites:
 #   1. Rust + wasm32 target:
@@ -8,9 +8,9 @@
 #        rustup target add wasm32-unknown-unknown
 #   2. Stellar CLI ≥ 22:
 #        cargo install --locked stellar-cli --features opt
-#   3. Run:  stellar keys generate trustlend-admin --global
-#            stellar keys use trustlend-admin
-#            stellar keys address trustlend-admin   ← note your admin address
+#   3. Run:  stellar keys generate credent-admin --global
+#            stellar keys use credent-admin
+#            stellar keys address credent-admin   ← note your admin address
 #   4. Fund on testnet:
 #        curl "https://friendbot.stellar.org/?addr=<YOUR_ADMIN_ADDRESS>"
 # =============================================================================
@@ -18,11 +18,11 @@
 set -euo pipefail
 
 NETWORK="testnet"
-ADMIN_KEY="trustlend-admin"
+ADMIN_KEY="credent-admin"
 ADMIN_ADDRESS=$(stellar keys address "$ADMIN_KEY")
 
 echo "═══════════════════════════════════════════════════"
-echo "  TrustLend Contract Deployment — Stellar Testnet"
+echo "  Credent Contract Deployment — Stellar Testnet"
 echo "  Admin: $ADMIN_ADDRESS"
 echo "═══════════════════════════════════════════════════"
 echo ""
@@ -88,31 +88,31 @@ MULTISIG_ID=$(stellar contract deploy \
   --source "$ADMIN_KEY")
 echo "  ✔ MULTISIG_ADMIN_CONTRACT_ID = $MULTISIG_ID"
 
-# ── TLEND governance token + distribution (issue #107) ───────────────────────
+# ── CREDENT governance token + distribution (issue #107) ───────────────────────
 
 echo ""
-echo "▶ Deploying TlendTokenContract…"
-TLEND_TOKEN_ID=$(stellar contract deploy \
-  --wasm target/wasm32v1-none/release/tlend_token.wasm \
+echo "▶ Deploying CredentTokenContract…"
+CREDENT_TOKEN_ID=$(stellar contract deploy \
+  --wasm target/wasm32v1-none/release/credent_token.wasm \
   --network "$NETWORK" \
   --source "$ADMIN_KEY")
-echo "  ✔ TLEND_TOKEN_CONTRACT_ID = $TLEND_TOKEN_ID"
+echo "  ✔ CREDENT_TOKEN_CONTRACT_ID = $CREDENT_TOKEN_ID"
 
 echo ""
-echo "▶ Deploying TlendVestingContract…"
-TLEND_VESTING_ID=$(stellar contract deploy \
-  --wasm target/wasm32v1-none/release/tlend_vesting.wasm \
+echo "▶ Deploying CredentVestingContract…"
+CREDENT_VESTING_ID=$(stellar contract deploy \
+  --wasm target/wasm32v1-none/release/credent_vesting.wasm \
   --network "$NETWORK" \
   --source "$ADMIN_KEY")
-echo "  ✔ TLEND_VESTING_CONTRACT_ID = $TLEND_VESTING_ID"
+echo "  ✔ CREDENT_VESTING_CONTRACT_ID = $CREDENT_VESTING_ID"
 
 echo ""
-echo "▶ Deploying TlendAirdropContract…"
-TLEND_AIRDROP_ID=$(stellar contract deploy \
-  --wasm target/wasm32v1-none/release/tlend_airdrop.wasm \
+echo "▶ Deploying CredentAirdropContract…"
+CREDENT_AIRDROP_ID=$(stellar contract deploy \
+  --wasm target/wasm32v1-none/release/credent_airdrop.wasm \
   --network "$NETWORK" \
   --source "$ADMIN_KEY")
-echo "  ✔ TLEND_AIRDROP_CONTRACT_ID = $TLEND_AIRDROP_ID"
+echo "  ✔ CREDENT_AIRDROP_CONTRACT_ID = $CREDENT_AIRDROP_ID"
 
 # ── Step 3: Initialise contracts ──────────────────────────────────────────────
 
@@ -223,7 +223,7 @@ echo "    contract before \`execute\` will succeed — see lib/contracts/multisi
 # too (with the default 1-of-1 setup, execute can follow immediately).
 # Set ORACLE_ADDRESS in your shell to auto-authorize the oracle that may post
 # off-chain credit scores (see scripts/oracle-post-credit-score.mjs).
-#   export ORACLE_ADDRESS=$(stellar keys address trustlend-oracle)
+#   export ORACLE_ADDRESS=$(stellar keys address credent-oracle)
 if [ -n "${ORACLE_ADDRESS:-}" ]; then
   echo "▶ Proposing + executing SetOracle ($ORACLE_ADDRESS) via multisig…"
   ORACLE_PROPOSAL_ID=$(stellar contract invoke --id "$MULTISIG_ID" --source "$ADMIN_KEY" --network "$NETWORK" \
@@ -237,38 +237,38 @@ else
   echo "    the MultiSigAdmin contract's propose/approve/execute (see lib/contracts/multisig-admin.ts)."
 fi
 
-# ── TLEND governance token + distribution (issue #107) ───────────────────────
-# Decimals/name/symbol are fixed at init. TLEND_TOTAL_SUPPLY is minted to the
+# ── CREDENT governance token + distribution (issue #107) ───────────────────────
+# Decimals/name/symbol are fixed at init. CREDENT_TOTAL_SUPPLY is minted to the
 # admin, who then funds individual vesting schedules (via `create_vesting_schedule`)
 # and the airdrop pool (via `fund`) out of that balance as needed.
-TLEND_TOTAL_SUPPLY="${TLEND_TOTAL_SUPPLY:-1000000000000}" # 100M TLEND @ 7 decimals
+CREDENT_TOTAL_SUPPLY="${CREDENT_TOTAL_SUPPLY:-1000000000000}" # 100M CREDENT @ 7 decimals
 
 echo ""
-echo "▶ Initialising TlendTokenContract (TLEND, 7 decimals)…"
-stellar contract invoke --id "$TLEND_TOKEN_ID" --source "$ADMIN_KEY" --network "$NETWORK" \
-  -- initialize --admin "$ADMIN_ADDRESS" --decimals 7 --name "TrustLend" --symbol "TLEND"
-stellar contract invoke --id "$TLEND_TOKEN_ID" --source "$ADMIN_KEY" --network "$NETWORK" \
-  -- mint --to "$ADMIN_ADDRESS" --amount "$TLEND_TOTAL_SUPPLY"
-echo "  ✔ Minted $TLEND_TOTAL_SUPPLY raw units of TLEND to $ADMIN_ADDRESS"
+echo "▶ Initialising CredentTokenContract (CREDENT, 7 decimals)…"
+stellar contract invoke --id "$CREDENT_TOKEN_ID" --source "$ADMIN_KEY" --network "$NETWORK" \
+  -- initialize --admin "$ADMIN_ADDRESS" --decimals 7 --name "Credent" --symbol "CREDENT"
+stellar contract invoke --id "$CREDENT_TOKEN_ID" --source "$ADMIN_KEY" --network "$NETWORK" \
+  -- mint --to "$ADMIN_ADDRESS" --amount "$CREDENT_TOTAL_SUPPLY"
+echo "  ✔ Minted $CREDENT_TOTAL_SUPPLY raw units of CREDENT to $ADMIN_ADDRESS"
 
-echo "▶ Initialising TlendVestingContract…"
-stellar contract invoke --id "$TLEND_VESTING_ID" --source "$ADMIN_KEY" --network "$NETWORK" \
-  -- initialize --admin "$ADMIN_ADDRESS" --token "$TLEND_TOKEN_ID"
+echo "▶ Initialising CredentVestingContract…"
+stellar contract invoke --id "$CREDENT_VESTING_ID" --source "$ADMIN_KEY" --network "$NETWORK" \
+  -- initialize --admin "$ADMIN_ADDRESS" --token "$CREDENT_TOKEN_ID"
 echo "  ℹ Create schedules later with \`create_vesting_schedule\` (admin, beneficiary,"
 echo "    category, total_amount, terms) — each call escrows tokens from the admin."
 
 # Airdrop needs a Merkle root of eligible (address, amount) leaves before it can
 # be initialised — generate one off-chain and pass it in:
-#   export TLEND_AIRDROP_MERKLE_ROOT=<64-char hex sha256 root>
-if [ -n "${TLEND_AIRDROP_MERKLE_ROOT:-}" ]; then
-  echo "▶ Initialising TlendAirdropContract…"
-  stellar contract invoke --id "$TLEND_AIRDROP_ID" --source "$ADMIN_KEY" --network "$NETWORK" \
-    -- initialize --admin "$ADMIN_ADDRESS" --token "$TLEND_TOKEN_ID" --merkle_root "$TLEND_AIRDROP_MERKLE_ROOT"
+#   export CREDENT_AIRDROP_MERKLE_ROOT=<64-char hex sha256 root>
+if [ -n "${CREDENT_AIRDROP_MERKLE_ROOT:-}" ]; then
+  echo "▶ Initialising CredentAirdropContract…"
+  stellar contract invoke --id "$CREDENT_AIRDROP_ID" --source "$ADMIN_KEY" --network "$NETWORK" \
+    -- initialize --admin "$ADMIN_ADDRESS" --token "$CREDENT_TOKEN_ID" --merkle_root "$CREDENT_AIRDROP_MERKLE_ROOT"
   echo "  ✔ Airdrop root set — fund the pool with the \`fund\` invocation before claims open"
 else
-  echo "ℹ Skipping TlendAirdropContract initialisation (set TLEND_AIRDROP_MERKLE_ROOT to enable)."
-  echo "    Initialise later with: stellar contract invoke --id $TLEND_AIRDROP_ID ... -- initialize \\"
-  echo "      --admin $ADMIN_ADDRESS --token $TLEND_TOKEN_ID --merkle_root <root>"
+  echo "ℹ Skipping CredentAirdropContract initialisation (set CREDENT_AIRDROP_MERKLE_ROOT to enable)."
+  echo "    Initialise later with: stellar contract invoke --id $CREDENT_AIRDROP_ID ... -- initialize \\"
+  echo "      --admin $ADMIN_ADDRESS --token $CREDENT_TOKEN_ID --merkle_root <root>"
 fi
 
 echo ""
@@ -314,18 +314,18 @@ stellar contract bindings typescript \
 
 stellar contract bindings typescript \
   --network "$NETWORK" \
-  --id "$TLEND_TOKEN_ID" \
-  --output-dir "$BINDINGS_OUT/tlend_token"
+  --id "$CREDENT_TOKEN_ID" \
+  --output-dir "$BINDINGS_OUT/credent_token"
 
 stellar contract bindings typescript \
   --network "$NETWORK" \
-  --id "$TLEND_VESTING_ID" \
-  --output-dir "$BINDINGS_OUT/tlend_vesting"
+  --id "$CREDENT_VESTING_ID" \
+  --output-dir "$BINDINGS_OUT/credent_vesting"
 
 stellar contract bindings typescript \
   --network "$NETWORK" \
-  --id "$TLEND_AIRDROP_ID" \
-  --output-dir "$BINDINGS_OUT/tlend_airdrop"
+  --id "$CREDENT_AIRDROP_ID" \
+  --output-dir "$BINDINGS_OUT/credent_airdrop"
 
 echo "  ✔ Bindings written to lib/contracts/generated/"
 
@@ -340,9 +340,9 @@ NEXT_PUBLIC_LENDING_CONTRACT_ID=$LENDING_ID
 NEXT_PUBLIC_DEFAULT_CONTRACT_ID=$DEFAULT_ID
 NEXT_PUBLIC_GOVERNANCE_CONTRACT_ID=$GOVERNANCE_ID
 NEXT_PUBLIC_MULTISIG_ADMIN_CONTRACT_ID=$MULTISIG_ID
-NEXT_PUBLIC_TLEND_TOKEN_CONTRACT_ID=$TLEND_TOKEN_ID
-NEXT_PUBLIC_TLEND_VESTING_CONTRACT_ID=$TLEND_VESTING_ID
-NEXT_PUBLIC_TLEND_AIRDROP_CONTRACT_ID=$TLEND_AIRDROP_ID
+NEXT_PUBLIC_CREDENT_TOKEN_CONTRACT_ID=$CREDENT_TOKEN_ID
+NEXT_PUBLIC_CREDENT_VESTING_CONTRACT_ID=$CREDENT_VESTING_ID
+NEXT_PUBLIC_CREDENT_AIRDROP_CONTRACT_ID=$CREDENT_AIRDROP_ID
 NEXT_PUBLIC_ADMIN_ADDRESS=$ADMIN_ADDRESS
 NEXT_PUBLIC_ORACLE_ADDRESS=${ORACLE_ADDRESS:-}
 EOF
@@ -361,7 +361,7 @@ echo "    Lending     : $LENDING_ID"
 echo "    Default Mgmt: $DEFAULT_ID"
 echo "    Governance  : $GOVERNANCE_ID"
 echo "    Multisig    : $MULTISIG_ID"
-echo "    TLEND Token : $TLEND_TOKEN_ID"
-echo "    TLEND Vest. : $TLEND_VESTING_ID"
-echo "    TLEND Aird. : $TLEND_AIRDROP_ID"
+echo "    CREDENT Token : $CREDENT_TOKEN_ID"
+echo "    CREDENT Vest. : $CREDENT_VESTING_ID"
+echo "    CREDENT Aird. : $CREDENT_AIRDROP_ID"
 echo "═══════════════════════════════════════════════════"
